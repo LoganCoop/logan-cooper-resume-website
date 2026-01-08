@@ -1,0 +1,28 @@
+services:
+  # Web Service
+  - type: web
+    name: logan-cooper-resume
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: EMAIL_USER
+        sync: false
+      - key: EMAIL_PASS
+        sync: false
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: MONGODB_URI
+        sync: false
+      - key: SITE_URL
+        sync: false
+    
+    # Auto-deploy on git push
+    autoDeploy: true
